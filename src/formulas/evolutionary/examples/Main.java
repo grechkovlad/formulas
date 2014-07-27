@@ -1,4 +1,5 @@
 package formulas.evolutionary.examples;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -36,7 +37,7 @@ public class Main {
 		operators.add(mutation);
 		EvolutionaryOperator<AbstractMutableFormula> evolutionScheme = new EvolutionPipeline<AbstractMutableFormula>(
 				operators);
-		FitnessEvaluator<? super AbstractMutableFormula> fitnessEvaluator = new SquareFitness();
+		FitnessEvaluator<? super AbstractMutableFormula> fitnessEvaluator = new RootFitness();
 		SelectionStrategy<? super AbstractMutableFormula> selectionStrategy = new RouletteWheelSelection();
 		Random rnd = new MersenneTwisterRNG();
 		EvolutionEngine<AbstractMutableFormula> engine = new GenerationalEvolutionEngine<AbstractMutableFormula>(
@@ -52,7 +53,7 @@ public class Main {
 				System.out.println(data.getMeanFitness() + "\n");
 			}
 		});
-		Formula res = engine.evolve(20, 0, new TargetFitness(0.1, false));
+		Formula res = engine.evolve(20, 0, new TargetFitness(0.01, false));
 		System.out.println(res);
 	}
 }

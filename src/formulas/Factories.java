@@ -1,6 +1,5 @@
 package formulas;
 
-
 public class Factories {
 
 	private static final ConstantFactory CONSTANT_FACTORY;
@@ -17,6 +16,7 @@ public class Factories {
 	private static final BinaryOperatorFactory BINARY_OPERATOR_FACTORY;
 
 	private static final MinusOperatorFactory MINUS_OPERATOR_FACTORY;
+	private static final SquareRootFactory SQUARE_ROOT_FACTORY;
 
 	private static final UnaryOperatorFactory UNARY_OPERATOR_FACTORY;
 
@@ -46,7 +46,10 @@ public class Factories {
 		BINARY_OPERATOR_FACTORY = new BinaryOperatorFactory(BINARY_FACTORIES);
 		MINUS_OPERATOR_FACTORY = new MinusOperatorFactory(FACTORIES_COMPRESSED,
 				LITERAL_FACTORY);
-		UNARY_FACTORIES = new AbstractUnaryOperatorFactory[] { MINUS_OPERATOR_FACTORY };
+		SQUARE_ROOT_FACTORY = new SquareRootFactory(FACTORIES_COMPRESSED,
+				LITERAL_FACTORY);
+		UNARY_FACTORIES = new AbstractUnaryOperatorFactory[] {
+				MINUS_OPERATOR_FACTORY, SQUARE_ROOT_FACTORY };
 		UNARY_OPERATOR_FACTORY = new UnaryOperatorFactory(UNARY_FACTORIES);
 		FACTORIES_COMPRESSED[0] = LITERAL_FACTORY;
 		FACTORIES_COMPRESSED[1] = BINARY_OPERATOR_FACTORY;
