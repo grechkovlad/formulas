@@ -32,6 +32,7 @@ public class SimpleMutationOperator implements
 		if (rnd.nextDouble() > probability) {
 			return formula.clone();
 		}
-		return formula.accept(new SimpleMutationVisitor(rnd));
+		return formula.accept(new SimpleMutationVisitor(rnd)).accept(
+				new SimplifierVisitor());
 	}
 }

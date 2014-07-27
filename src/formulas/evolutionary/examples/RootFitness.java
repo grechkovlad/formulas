@@ -20,7 +20,7 @@ public class RootFitness implements FitnessEvaluator<Formula> {
 			if (val != val) {
 				return Double.MAX_VALUE;
 			}
-			fitness += Math.pow((val - Math.sqrt(x)) / x, 2.0);
+			fitness += Math.pow((val - Math.log(x)) / x, 2.0);
 		}
 		return fitness;
 	}

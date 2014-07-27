@@ -26,4 +26,8 @@ public class Constant extends AbstractLiteral {
 		return new Constant(val);
 	}
 
+	public double getValue() {
+		return val;
+	}
+
 }

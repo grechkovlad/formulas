@@ -22,12 +22,14 @@ public class FormulaCrossoverOperator extends
 		AbstractMutableFormula forAppending1 = formula2
 				.accept(new RandomChooseVisitor(rnd));
 		List<AbstractMutableFormula> childrens = new ArrayList<AbstractMutableFormula>();
-		childrens.add(formula1.accept(new RandomAppendVisitor(rnd,
-				forAppending1)));
+		childrens.add(formula1.accept(
+				new RandomAppendVisitor(rnd, forAppending1)).accept(
+				new SimplifierVisitor()));
 		AbstractMutableFormula forAppending2 = formula1
 				.accept(new RandomChooseVisitor(rnd));
-		childrens.add(formula2.accept(new RandomAppendVisitor(rnd,
-				forAppending2)));
+		childrens.add(formula2.accept(
+				new RandomAppendVisitor(rnd, forAppending2)).accept(
+				new SimplifierVisitor()));
 		return childrens;
 	}
 

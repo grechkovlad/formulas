@@ -30,7 +30,7 @@ public class Main {
 		CandidateFactory<AbstractMutableFormula> candidateFactory = FormulaCandidateFactory
 				.getInstance();
 		EvolutionaryOperator<AbstractMutableFormula> mutation = new SimpleMutationOperator(
-				0.2);
+				0.05);
 		FormulaCrossoverOperator crossover = new FormulaCrossoverOperator(2);
 		List<EvolutionaryOperator<AbstractMutableFormula>> operators = new ArrayList<EvolutionaryOperator<AbstractMutableFormula>>();
 		operators.add(crossover);
@@ -53,7 +53,7 @@ public class Main {
 				System.out.println(data.getMeanFitness() + "\n");
 			}
 		});
-		Formula res = engine.evolve(20, 0, new TargetFitness(0.01, false));
+		Formula res = engine.evolve(5, 0, new TargetFitness(0.01, false));
 		System.out.println(res);
 	}
 }
