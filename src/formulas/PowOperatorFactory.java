@@ -9,7 +9,7 @@ public class PowOperatorFactory extends AbstractBinaryOperatorFactory {
 	}
 
 	@Override
-	public AbstractBinaryOperator getInstance(MutableFormula left, MutableFormula right) {
+	public AbstractBinaryOperator getInstance(AbstractMutableFormula left, AbstractMutableFormula right) {
 		return new PowOperator(left, right);
 	}
 

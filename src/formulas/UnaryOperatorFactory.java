@@ -19,7 +19,7 @@ public class UnaryOperatorFactory implements FormulaFactory {
 	}
 
 	public AbstractUnaryOperator getRandomInstance(Random rnd,
-			MutableFormula formula) {
+			AbstractMutableFormula formula) {
 		return factories[rnd.nextInt(factories.length)].getInstance(formula);
 	}
 

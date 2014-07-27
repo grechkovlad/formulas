@@ -4,7 +4,7 @@ import java.util.Map;
 
 public class SumOperator extends AbstractBinaryOperator {
 
-	public SumOperator(MutableFormula left, MutableFormula right) {
+	public SumOperator(AbstractMutableFormula left, AbstractMutableFormula right) {
 		super(left, right);
 	}
 
@@ -19,8 +19,8 @@ public class SumOperator extends AbstractBinaryOperator {
 	}
 
 	@Override
-	public AbstractBinaryOperator getInstance(MutableFormula left,
-			MutableFormula right) {
+	public AbstractBinaryOperator getInstance(AbstractMutableFormula left,
+			AbstractMutableFormula right) {
 		return new SumOperator(left, right);
 	}
 

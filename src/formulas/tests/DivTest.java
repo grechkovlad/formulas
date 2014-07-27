@@ -21,4 +21,9 @@ public class DivTest {
 				new DivOperator(new Constant(16), new Variable("x")).eval(vars),
 				0);
 	}
+
+	@Test
+	public void testSize() {
+		assertEquals(3, new DivOperator(new Constant(16), new Variable("x")).getSubtreeSize());
+	}
 }

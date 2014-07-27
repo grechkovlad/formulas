@@ -4,7 +4,7 @@ import java.util.Map;
 
 public class PowOperator extends AbstractBinaryOperator {
 
-	public PowOperator(MutableFormula left, MutableFormula right) {
+	public PowOperator(AbstractMutableFormula left, AbstractMutableFormula right) {
 		super(left, right);
 	}
 
@@ -19,8 +19,8 @@ public class PowOperator extends AbstractBinaryOperator {
 	}
 
 	@Override
-	public AbstractBinaryOperator getInstance(MutableFormula left,
-			MutableFormula right) {
+	public AbstractBinaryOperator getInstance(AbstractMutableFormula left,
+			AbstractMutableFormula right) {
 		return new PowOperator(left, right);
 	}
 }

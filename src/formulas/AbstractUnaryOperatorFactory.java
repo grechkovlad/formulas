@@ -18,7 +18,7 @@ public abstract class AbstractUnaryOperatorFactory implements FormulaFactory {
 		if (depth < 0) {
 			throw new IllegalArgumentException("depth must be non-negative");
 		}
-		MutableFormula formula;
+		AbstractMutableFormula formula;
 		if (depth == 1) {
 			formula = literalFactory.getRandomInstance(rnd, depth - 1);
 			return getInstance(formula);
@@ -28,6 +28,6 @@ public abstract class AbstractUnaryOperatorFactory implements FormulaFactory {
 		return getInstance(formula);
 	}
 
-	public abstract AbstractUnaryOperator getInstance(MutableFormula formula);
+	public abstract AbstractUnaryOperator getInstance(AbstractMutableFormula formula);
 
 }

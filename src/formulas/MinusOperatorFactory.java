@@ -9,7 +9,7 @@ public class MinusOperatorFactory extends AbstractUnaryOperatorFactory {
 	}
 
 	@Override
-	public MinusOperator getInstance(MutableFormula formula) {
+	public MinusOperator getInstance(AbstractMutableFormula formula) {
 		return new MinusOperator(formula);
 	}
 

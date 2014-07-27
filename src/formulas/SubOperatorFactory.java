@@ -9,7 +9,7 @@ public class SubOperatorFactory extends AbstractBinaryOperatorFactory {
 	}
 
 	@Override
-	public SubOperator getInstance(MutableFormula left, MutableFormula right) {
+	public SubOperator getInstance(AbstractMutableFormula left, AbstractMutableFormula right) {
 		return new SubOperator(left, right);
 	}
 

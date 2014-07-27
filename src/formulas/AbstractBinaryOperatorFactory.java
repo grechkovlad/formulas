@@ -17,8 +17,8 @@ public abstract class AbstractBinaryOperatorFactory implements FormulaFactory {
 	public AbstractBinaryOperator getRandomInstance(Random rnd, int depth) {
 		if (depth < 1)
 			throw new IllegalArgumentException("depth must be >= 1");
-		MutableFormula left;
-		MutableFormula right;
+		AbstractMutableFormula left;
+		AbstractMutableFormula right;
 		if (depth == 1) {
 			left = literalFactory.getRandomInstance(rnd, depth - 1);
 			right = literalFactory.getRandomInstance(rnd, depth - 1);
@@ -31,7 +31,7 @@ public abstract class AbstractBinaryOperatorFactory implements FormulaFactory {
 		return getInstance(left, right);
 	}
 
-	public abstract AbstractBinaryOperator getInstance(MutableFormula left,
-			MutableFormula right);
+	public abstract AbstractBinaryOperator getInstance(AbstractMutableFormula left,
+			AbstractMutableFormula right);
 
 }

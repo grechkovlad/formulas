@@ -1,38 +1,38 @@
 package formulas;
 
-import java.util.Random;
+import formulas.evolutionary.FormulaVisitor;
 
-import formulas.evolutionary.FormulaMutationStrategy;
+public abstract class AbstractBinaryOperator extends AbstractMutableFormula {
 
-public abstract class AbstractBinaryOperator implements MutableFormula {
+	protected AbstractMutableFormula left;
+	protected AbstractMutableFormula right;
 
-	protected MutableFormula left;
-	protected MutableFormula right;
-
-	public AbstractBinaryOperator(MutableFormula left, MutableFormula right) {
+	public AbstractBinaryOperator(AbstractMutableFormula left,
+			AbstractMutableFormula right) {
 		this.left = left;
 		this.right = right;
+		subtreeSize = left.getSubtreeSize() + right.getSubtreeSize() + 1;
 	}
 
-	public Formula getLeft() {
+	public AbstractMutableFormula getLeft() {
 		return left;
 	}
 
-	public Formula getRight() {
+	public AbstractMutableFormula getRight() {
 		return right;
 	}
 
+	public abstract AbstractBinaryOperator getInstance(
+			AbstractMutableFormula left, AbstractMutableFormula right);
+
 	@Override
-	public AbstractBinaryOperator mutate(Random rnd,
-			FormulaMutationStrategy strategy) {
-		if (rnd.nextDouble() < strategy.getMutationProbability())
-			return Factories.getBinaryOperatorFactory().getRandomInstance(rnd,
-					left.mutate(rnd, strategy), right.mutate(rnd, strategy));
-		return getInstance(left.mutate(rnd, strategy),
-				right.mutate(rnd, strategy));
+	public AbstractMutableFormula accept(FormulaVisitor visitor) {
+		return visitor.visit(this);
 	}
 
-	public abstract AbstractBinaryOperator getInstance(MutableFormula left,
-			MutableFormula right);
+	@Override
+	public AbstractBinaryOperator clone() {
+		return getInstance(left.clone(), right.clone());
+	}
 
 }

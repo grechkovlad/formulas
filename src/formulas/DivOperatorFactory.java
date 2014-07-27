@@ -9,7 +9,7 @@ public class DivOperatorFactory extends AbstractBinaryOperatorFactory {
 	}
 
 	@Override
-	public DivOperator getInstance(MutableFormula left, MutableFormula right) {
+	public DivOperator getInstance(AbstractMutableFormula left, AbstractMutableFormula right) {
 		return new DivOperator(left, right);
 	}
 

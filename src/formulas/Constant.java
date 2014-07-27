@@ -8,6 +8,7 @@ public class Constant extends AbstractLiteral {
 
 	public Constant(double val) {
 		this.val = val;
+		this.subtreeSize = 1;
 	}
 
 	@Override
@@ -18,6 +19,11 @@ public class Constant extends AbstractLiteral {
 	@Override
 	public String toString() {
 		return String.valueOf(val);
+	}
+
+	@Override
+	public Constant clone() {
+		return new Constant(val);
 	}
 
 }

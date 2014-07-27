@@ -20,4 +20,11 @@ public class SumTest {
 				new SumOperator(new Constant(3), new Variable("x")).eval(vars),
 				0);
 	}
+
+	@Test
+	public void testSize() {
+		assertEquals(3,
+				new SumOperator(new Constant(3), new Variable("x"))
+						.getSubtreeSize());
+	}
 }

@@ -21,4 +21,11 @@ public class SubTest {
 				new SubOperator(new Constant(10), new Variable("x")).eval(vars),
 				0);
 	}
+
+	@Test
+	public void testSize() {
+		assertEquals(3,
+				new SubOperator(new Constant(10), new Variable("x"))
+						.getSubtreeSize());
+	}
 }

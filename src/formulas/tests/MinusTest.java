@@ -12,4 +12,8 @@ public class MinusTest {
 	public void testEval() {
 		assertEquals(-8.0, new MinusOperator(new Constant(8.0)).eval(null), 0);
 	}
+
+	public void testSize() {
+		assertEquals(2, new MinusOperator(new Constant(3)).getSubtreeSize());
+	}
 }

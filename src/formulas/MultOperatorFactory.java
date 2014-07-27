@@ -9,7 +9,7 @@ public class MultOperatorFactory extends AbstractBinaryOperatorFactory {
 	}
 
 	@Override
-	public MultOperator getInstance(MutableFormula left, MutableFormula right) {
+	public MultOperator getInstance(AbstractMutableFormula left, AbstractMutableFormula right) {
 		return new MultOperator(left, right);
 	}
 

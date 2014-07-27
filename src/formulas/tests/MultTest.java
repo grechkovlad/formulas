@@ -21,4 +21,11 @@ public class MultTest {
 				new MultOperator(new Constant(6), new Variable("x")).eval(vars),
 				0);
 	}
+
+	@Test
+	public void testSize() {
+		assertEquals(3,
+				new MultOperator(new Constant(6), new Variable("x"))
+						.getSubtreeSize());
+	}
 }

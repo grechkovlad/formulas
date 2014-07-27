@@ -20,4 +20,10 @@ public class PowTest {
 				new PowOperator(new Constant(2), new Variable("x")).eval(vars),
 				0);
 	}
+
+	public void testSize() {
+		assertEquals(3,
+				new PowOperator(new Constant(2), new Variable("x"))
+						.getSubtreeSize());
+	}
 }

@@ -9,7 +9,7 @@ public class SumOperatorFactory extends AbstractBinaryOperatorFactory {
 	}
 
 	@Override
-	public SumOperator getInstance(MutableFormula left, MutableFormula right) {
+	public SumOperator getInstance(AbstractMutableFormula left, AbstractMutableFormula right) {
 		return new SumOperator(left, right);
 	}
 

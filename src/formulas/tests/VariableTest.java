@@ -31,4 +31,9 @@ public class VariableTest {
 		Map<String, Double> vars = new HashMap<String, Double>();
 		new Variable("y").eval(vars);
 	}
+
+	@Test
+	public void testSize() {
+		assertEquals(1, new Variable("y").getSubtreeSize());
+	}
 }

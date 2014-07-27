@@ -4,7 +4,7 @@ import java.util.Map;
 
 public class MinusOperator extends AbstractUnaryOperator {
 
-	public MinusOperator(MutableFormula formula) {
+	public MinusOperator(AbstractMutableFormula formula) {
 		super(formula);
 	}
 
@@ -19,7 +19,7 @@ public class MinusOperator extends AbstractUnaryOperator {
 	}
 
 	@Override
-	public AbstractUnaryOperator getInstance(MutableFormula formula) {
+	public AbstractUnaryOperator getInstance(AbstractMutableFormula formula) {
 		return new MinusOperator(formula);
 	}
 

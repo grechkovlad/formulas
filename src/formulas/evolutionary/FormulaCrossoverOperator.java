@@ -6,27 +6,29 @@ import java.util.Random;
 
 import org.uncommons.watchmaker.framework.operators.AbstractCrossover;
 
-import formulas.Constant;
-import formulas.MultOperator;
-import formulas.MutableFormula;
-import formulas.SumOperator;
+import formulas.AbstractMutableFormula;
 
-public class FormulaCrossoverOperator extends AbstractCrossover<MutableFormula> {
+public class FormulaCrossoverOperator extends
+		AbstractCrossover<AbstractMutableFormula> {
 
 	public FormulaCrossoverOperator(int crossoverPoints) {
 		super(crossoverPoints);
 	}
 
 	@Override
-	protected List<MutableFormula> mate(MutableFormula formula1,
-			MutableFormula formula2, int numberOfCrossoverPoints, Random rnd) {
-		List<MutableFormula> chilrens = new ArrayList<MutableFormula>();
-		for (int i = 0; i < numberOfCrossoverPoints; i++) {
-			double c = rnd.nextDouble();
-			chilrens.add(new SumOperator(new MultOperator(new Constant(c),
-					formula1), new MultOperator(new Constant(1 - c), formula2)));
-		}
-		return chilrens;
+	public List<AbstractMutableFormula> mate(AbstractMutableFormula formula1,
+			AbstractMutableFormula formula2, int numberOfCrossoverPoints,
+			Random rnd) {
+		AbstractMutableFormula forAppending1 = formula2
+				.accept(new RandomChooseVisitor(rnd));
+		List<AbstractMutableFormula> childrens = new ArrayList<AbstractMutableFormula>();
+		childrens.add(formula1.accept(new RandomAppendVisitor(rnd,
+				forAppending1)));
+		AbstractMutableFormula forAppending2 = formula1
+				.accept(new RandomChooseVisitor(rnd));
+		childrens.add(formula2.accept(new RandomAppendVisitor(rnd,
+				forAppending2)));
+		return childrens;
 	}
 
 }

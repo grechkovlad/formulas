@@ -4,25 +4,39 @@ import java.util.Random;
 
 import org.uncommons.watchmaker.framework.factories.AbstractCandidateFactory;
 
+import formulas.AbstractMutableFormula;
 import formulas.Factories;
 import formulas.FormulaFactory;
-import formulas.MutableFormula;
 
 public class FormulaCandidateFactory extends
-		AbstractCandidateFactory<MutableFormula> {
+		AbstractCandidateFactory<AbstractMutableFormula> {
+
+	private static FormulaCandidateFactory inst;
 
 	private int depth;
 
-	public FormulaCandidateFactory(int depth) {
+	private FormulaCandidateFactory(int depth) {
 		this.depth = depth;
 	}
 
 	@Override
-	public MutableFormula generateRandomCandidate(Random rnd) {
-		if (depth == 0)
-			return Factories.getLiteralFactory().getRandomInstance(rnd, depth);
+	public AbstractMutableFormula generateRandomCandidate(Random rnd) {
+		return generateRandomCandidate(rnd, depth);
+	}
+
+	public AbstractMutableFormula generateRandomCandidate(Random rnd,
+			int specificDepth) {
+		if (specificDepth == 0)
+			return Factories.getLiteralFactory().getRandomInstance(rnd,
+					specificDepth);
 		FormulaFactory[] factories = Factories.getAllFactories();
 		return factories[rnd.nextInt(factories.length)].getRandomInstance(rnd,
-				depth);
+				specificDepth);
+	}
+
+	public static FormulaCandidateFactory getInstance() {
+		if (inst == null)
+			inst = new FormulaCandidateFactory(1); // TODO read from config
+		return inst;
 	}
 }

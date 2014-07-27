@@ -4,7 +4,7 @@ import java.util.Map;
 
 public class DivOperator extends AbstractBinaryOperator {
 
-	public DivOperator(MutableFormula left, MutableFormula right) {
+	public DivOperator(AbstractMutableFormula left, AbstractMutableFormula right) {
 		super(left, right);
 	}
 
@@ -19,8 +19,8 @@ public class DivOperator extends AbstractBinaryOperator {
 	}
 
 	@Override
-	public AbstractBinaryOperator getInstance(MutableFormula left,
-			MutableFormula right) {
+	public DivOperator getInstance(AbstractMutableFormula left,
+			AbstractMutableFormula right) {
 		return new DivOperator(left, right);
 	}
 

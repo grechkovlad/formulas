@@ -4,7 +4,7 @@ import java.util.Map;
 
 public class MultOperator extends AbstractBinaryOperator {
 
-	public MultOperator(MutableFormula left, MutableFormula right) {
+	public MultOperator(AbstractMutableFormula left, AbstractMutableFormula right) {
 		super(left, right);
 	}
 
@@ -19,8 +19,8 @@ public class MultOperator extends AbstractBinaryOperator {
 	}
 
 	@Override
-	public AbstractBinaryOperator getInstance(MutableFormula left,
-			MutableFormula right) {
+	public AbstractBinaryOperator getInstance(AbstractMutableFormula left,
+			AbstractMutableFormula right) {
 		return new MultOperator(left, right);
 	}
 

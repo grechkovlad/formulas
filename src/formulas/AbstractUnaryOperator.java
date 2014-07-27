@@ -1,30 +1,29 @@
 package formulas;
 
-import java.util.Random;
+import formulas.evolutionary.FormulaVisitor;
 
-import formulas.evolutionary.FormulaMutationStrategy;
+public abstract class AbstractUnaryOperator extends AbstractMutableFormula {
 
-public abstract class AbstractUnaryOperator implements MutableFormula {
+	protected AbstractMutableFormula formula;
 
-	protected MutableFormula formula;
-
-	public AbstractUnaryOperator(MutableFormula formula) {
+	public AbstractUnaryOperator(AbstractMutableFormula formula) {
 		this.formula = formula;
+		subtreeSize = formula.getSubtreeSize() + 1;
 	}
 
-	public Formula getFormula() {
+	public AbstractMutableFormula getFormula() {
 		return formula;
 	}
 
-	@Override
-	public AbstractUnaryOperator mutate(Random rnd,
-			FormulaMutationStrategy strategy) {
-		if (rnd.nextDouble() < strategy.getMutationProbability()) {
-			return Factories.getUnaryOperatorFactory().getRandomInstance(rnd,
-					formula.mutate(rnd, strategy));
-		}
-		return getInstance(formula.mutate(rnd, strategy));
+	public abstract AbstractUnaryOperator getInstance(
+			AbstractMutableFormula formula);
+
+	public AbstractMutableFormula accept(FormulaVisitor visitor) {
+		return visitor.visit(this);
 	}
 
-	public abstract AbstractUnaryOperator getInstance(MutableFormula formula);
+	@Override
+	public AbstractUnaryOperator clone() {
+		return getInstance(formula.clone());
+	}
 }

@@ -19,7 +19,7 @@ public class BinaryOperatorFactory implements FormulaFactory {
 	}
 
 	public AbstractBinaryOperator getRandomInstance(Random rnd,
-			MutableFormula left, MutableFormula right) {
+			AbstractMutableFormula left, AbstractMutableFormula right) {
 		return factories[rnd.nextInt(factories.length)]
 				.getInstance(left, right);
 	}

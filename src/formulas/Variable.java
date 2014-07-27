@@ -8,6 +8,7 @@ public class Variable extends AbstractLiteral {
 
 	public Variable(String name) { // TODO check existence in VariableNames
 		this.name = name;
+		subtreeSize = 1;
 	}
 
 	@Override
@@ -20,5 +21,10 @@ public class Variable extends AbstractLiteral {
 	@Override
 	public String toString() {
 		return name;
+	}
+
+	@Override
+	public Variable clone() {
+		return new Variable(name);
 	}
 }
