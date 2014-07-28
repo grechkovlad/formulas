@@ -36,7 +36,7 @@ public class FormulaCandidateFactory extends
 
 	public static FormulaCandidateFactory getInstance() {
 		if (inst == null)
-			inst = new FormulaCandidateFactory(1); // TODO read from config
+			inst = new FormulaCandidateFactory(3); // TODO read from config
 		return inst;
 	}
 }

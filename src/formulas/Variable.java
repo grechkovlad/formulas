@@ -27,4 +27,8 @@ public class Variable extends AbstractLiteral {
 	public Variable clone() {
 		return new Variable(name);
 	}
+
+	public String getName() {
+		return name;
+	}
 }
